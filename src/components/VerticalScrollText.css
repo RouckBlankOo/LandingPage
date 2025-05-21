@@ -1,0 +1,79 @@
+/* VerticalScrollText.css */
+
+.scroll-text-mask {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 30vh;
+  background: linear-gradient(to top, #101624 50%, rgba(16, 22, 36, 0) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.vertical-scroll-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1; /* Behind the logo */
+  pointer-events: none;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Position will be controlled by GSAP */
+  transform-origin: center center;
+  will-change: transform, opacity;
+  /* Ensuring the text doesn't break into multiple lines */
+  white-space: nowrap;
+}
+
+.background-text-vertical {
+  font-size: 13vw;
+  font-weight: 800;
+  font-family: 'Oswald', 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8); /* Slightly transparent white */
+  letter-spacing: 0.01em;
+  line-height: 1;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+  text-shadow:
+    0 2px 8px rgba(30, 60, 114, 0.08),
+    0 1px 0px #1e3c7222;
+  transform-origin: center center;
+}
+
+/* Text reflection effect */
+.background-text-reflection {
+  position: relative;
+  font-size: 13vw;
+  font-weight: 800;
+  font-family: 'Oswald', 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+  background: linear-gradient(90deg, rgba(230, 240, 255, 0.3) 60%, rgba(179, 216, 247, 0.2) 80%, rgba(72, 198, 239, 0.1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: scaleY(-0.2) translateY(-10px); /* Flip and position the reflection */
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+  filter: blur(1px);
+  transform-origin: top center;
+  /* Create fading effect for reflection */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+}

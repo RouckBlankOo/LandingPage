@@ -1,0 +1,96 @@
+/* ScrollText.css */
+
+.scroll-text-mask {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 50vh;
+  background: linear-gradient(to top, #101624 50%, rgba(16, 22, 36, 0) 100%);
+  z-index: 3;
+  pointer-events: none;
+}
+
+.scroll-text-container {
+  background: rgba(18, 18, 18, 0.3); /* Optional: subtle overlay */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 1.2s cubic-bezier(0.4,0,0.2,1);
+  overflow: hidden;
+}
+
+.text-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 25vh; /* Space between text groups */
+}
+
+.background-text-vertical {
+  font-size: 13vw;
+  font-weight: 800;
+  font-family: 'Oswald', 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+  color: #fff; /* Solid white */
+  background: none;
+  -webkit-background-clip: unset;
+  -webkit-text-fill-color: unset;
+  background-clip: unset;
+  opacity: 0;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  line-height: 1;
+  text-transform: uppercase;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform, opacity;
+  text-shadow:
+    0 2px 8px rgba(30, 60, 114, 0.08),
+    0 1px 0px #1e3c7222;
+  filter: none; /* No blur */
+  transform-origin: center center;
+  transition: opacity 0.5s, filter 0.5s;
+}
+
+/* Text reflection effect */
+.background-text-reflection {
+  position: relative;
+  font-size: 13vw;
+  font-weight: 800;
+  font-family: 'Oswald', 'Bebas Neue', 'Arial Narrow', Arial, sans-serif;
+  background: linear-gradient(90deg, rgba(230, 240, 255, 0.3) 60%, rgba(179, 216, 247, 0.2) 80%, rgba(72, 198, 239, 0.1) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  line-height: 1;
+  text-transform: uppercase;
+  transform: scaleY(-0.2) translateY(-10px); /* Flip and position the reflection */
+  z-index: 0;
+  user-select: none;
+  pointer-events: none;
+  will-change: transform, opacity;
+  filter: blur(1px);
+  transform-origin: top center;
+  /* Create fading effect for reflection */
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
