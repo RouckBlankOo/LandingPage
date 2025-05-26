@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
+import FluidCanvas from "./FluidCanvas";
 import "./CursorEffects.css";
-import FluidCanvas from "./FluidCanvas"; // Adjust the path as needed
 
 const CursorEffects = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
