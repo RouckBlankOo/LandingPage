@@ -13,7 +13,7 @@ const Preloader = ({ onComplete }: { onComplete: () => void }) => {
   const [loadingPercent, setLoadingPercent] = useState(0);
 
   // Text to be animated
-  const text = "SYSTEM INITIALIZING";
+  const text = "Powered By DigiSubs";
 
   useEffect(() => {
     console.log("Preloader mounted");
