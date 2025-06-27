@@ -1,0 +1,349 @@
+.services-section,
+.technologies-section {
+  min-height: 100vh;
+  padding: 96px 0; /* Matches py-24 */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: transparent;
+  perspective: 1200px;
+}
+
+.container {
+  max-width: 1600px;
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.services-heading,
+.technologies-heading {
+  font-size: 4.5rem; /* Matches text-6xl */
+  font-weight: 500; /* Matches font-medium */
+  text-align: left;
+  margin-top: 24px; /* Matches mt-6 */
+  margin-bottom: 16px;
+  color: white;
+  text-shadow: 0 8px 40px rgba(72, 198, 239, 0.5);
+  position: relative;
+  transform-style: preserve-3d;
+  letter-spacing: -0.02em;
+}
+
+.highlight {
+  background: linear-gradient(90deg, #48c6ef 0%, #6f86d6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; /* Fallback */
+  filter: drop-shadow(0 0 15px rgba(72, 198, 239, 0.6));
+}
+
+.services-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1600px;
+  width: 100%;
+  padding: 0 20px;
+  margin-bottom: 100px;
+  perspective: 1200px;
+}
+
+.service-item {
+  position: relative;
+  flex: 1 1 350px;
+  max-width: 450px;
+  min-width: 300px;
+  height: 360px;
+  background: rgba(15, 30, 60, 0.75);
+  border-radius: 25px;
+  padding: 35px;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(72, 198, 239, 0.25);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(72, 198, 239, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.3, 1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform-style: preserve-3d;
+}
+
+.texture-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200"><defs><filter id="turbulence"><feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="3" result="noise" /><feDisplacementMap in="SourceGraphic" in2="noise" scale="10" xChannelSelector="R" yChannelSelector="G" /></filter></defs><rect width="200" height="200" fill="rgba(72,198,239,0.05)" filter="url(#turbulence)" /><circle cx="100" cy="100" r="80" fill="none" stroke="rgba(72,198,239,0.08)" stroke-width="0.5" /><path d="M50,150 C80,120 120,80 150,50" fill="none" stroke="rgba(72,198,239,0.08)" stroke-width="0.5" /></svg>') repeat;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: soft-light;
+  opacity: 0.7;
+}
+
+.service-item > * {
+  position: relative;
+  z-index: 1;
+}
+
+.service-item:hover {
+  transform: translateY(-15px) rotateY(8deg) rotateX(8deg) translateZ(30px);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.45), 
+    0 0 40px rgba(72, 198, 239, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  border-color: rgba(72, 198, 239, 0.6);
+}
+
+.service-icon {
+  font-size: 3.5rem;
+  margin-bottom: 25px;
+  filter: drop-shadow(0 0 12px rgba(72, 198, 239, 0.6));
+  display: inline-block;
+  transform: translateZ(50px);
+  transition: transform 0.3s ease;
+}
+
+.service-item:hover .service-icon {
+  transform: translateZ(70px);
+}
+
+.service-title {
+  margin-bottom: 20px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.service-title::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 50px;
+  background: linear-gradient(to right, rgba(15, 30, 60, 0), rgba(15, 30, 60, 0.75));
+  z-index: 1;
+  pointer-events: none;
+}
+
+.service-title-scroll {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #48c6ef;
+  white-space: nowrap;
+  padding-right: 25px;
+  display: inline-block;
+  will-change: transform;
+  transform: translateZ(40px);
+  text-shadow: 0 0 10px rgba(72, 198, 239, 0.4);
+}
+
+.service-description {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.8;
+  font-size: 1.15rem;
+  font-weight: 300;
+  margin-top: 15px;
+  flex: 1;
+  transform: translateZ(20px);
+}
+
+.services-cta {
+  margin-top: 80px;
+  text-align: center;
+  transform-style: preserve-3d;
+  opacity: 0; /* Initial state for animation */
+}
+
+.services-cta p {
+  font-size: 1.6rem;
+  color: white;
+  margin-bottom: 25px;
+  font-weight: 300;
+  transform: translateZ(20px);
+}
+
+.cta-button {
+  padding: 18px 35px;
+  background: linear-gradient(90deg, #48c6ef 0%, #6f86d6 100%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 6px 25px rgba(72, 198, 239, 0.5);
+  transform: translateZ(30px);
+}
+
+.cta-button:hover {
+  transform: translateZ(40px) translateY(-5px);
+  box-shadow: 0 10px 30px rgba(72, 198, 239, 0.7);
+}
+
+/* Technologies section specific styles */
+.technologies-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .technologies-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 64px; /* Matches lg:gap-16 */
+  }
+}
+
+.technologies-description {
+  color: rgba(255, 255, 255, 0.5); /* Matches text-white/50 */
+  font-size: 1.125rem; /* Matches text-lg */
+  margin-top: 16px; /* Matches mt-4 */
+  line-height: 1.5;
+}
+
+.technologies-columns {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px; /* Matches gap-4 */
+  height: 400px; /* Matches h-[400px] */
+  margin-top: 32px; /* Matches mt-8 */
+  overflow: hidden;
+  mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+}
+
+@media (min-width: 768px) {
+  .technologies-columns {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .technologies-columns {
+    height: 800px; /* Matches lg:h-[800px] */
+    margin-top: 0; /* Matches lg:mt-0 */
+  }
+}
+
+.technologies-column-hidden {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .technologies-column-hidden {
+    display: flex; /* Matches hidden md:flex */
+  }
+}
+
+/* IntegrationColumn item styles */
+.integration-item {
+  background: rgba(15, 30, 60, 0.75); /* Matches bg-neutral-900 with sci-fi theme */
+  border: 1px solid rgba(255, 255, 255, 0.1); /* Matches border-white/10 */
+  border-radius: 24px; /* Matches rounded-3xl */
+  padding: 24px; /* Matches p-6 */
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  margin-bottom: 16px; /* Matches gap-4 in flex column */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-style: preserve-3d;
+}
+
+.integration-item:hover {
+  transform: translateY(-5px) translateZ(20px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(72, 198, 239, 0.25);
+  border-color: rgba(72, 198, 239, 0.5);
+}
+
+.integration-icon {
+  width: 96px; /* Matches size-24 */
+  height: 96px;
+  filter: drop-shadow(0 0 8px rgba(72, 198, 239, 0.5));
+  margin-bottom: 24px; /* Matches mt-6 for heading */
+}
+
+.integration-name {
+  font-size: 1.875rem; /* Matches text-3xl */
+  font-weight: 700;
+  color: white; /* Adjusted for visibility */
+  text-align: center;
+  margin-bottom: 8px; /* Matches mt-2 for description */
+  transform: translateZ(15px);
+  text-shadow: 0 0 8px rgba(72, 198, 239, 0.3);
+}
+
+.integration-description {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.5); /* Matches text-white/50 */
+  text-align: center;
+  line-height: 1.5;
+  transform: translateZ(10px);
+}
+
+@media (max-width: 768px) {
+  .services-heading,
+  .technologies-heading {
+    font-size: 3.2rem;
+    margin-bottom: 16px;
+  }
+  
+  .service-item {
+    flex: 0 0 100%;
+    height: auto;
+    min-height: 340px;
+  }
+  
+  .service-title-scroll {
+    font-size: 1.8rem;
+  }
+  
+  .service-description {
+    font-size: 1.05rem;
+  }
+  
+  .services-cta p {
+    font-size: 1.3rem;
+  }
+  
+  .cta-button {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+  }
+  
+  .technologies-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .technologies-columns {
+    height: 400px;
+  }
+  
+  .integration-item {
+    padding: 16px;
+  }
+  
+  .integration-icon {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .integration-name {
+    font-size: 1.5rem;
+  }
+  
+  .integration-description {
+    font-size: 0.95rem;
+  }
+}

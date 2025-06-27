@@ -1,0 +1,21 @@
+.contact-section {
+    position: relative;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #1f2b97, #48c6ef);
+    padding: 50px 20px;
+    opacity: 0; /* Initially hidden */
+    transform: translateY(50px); /* Start position for animation */
+  }
+  
+  .visme_d {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+  }

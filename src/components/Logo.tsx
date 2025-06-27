@@ -48,26 +48,22 @@ export default function Logo() {
       const scrollY = window.scrollY;
       const vh = window.innerHeight;
 
-      // Debug: Log scroll values
-      console.log("ScrollY:", scrollY, "ViewHeight:", vh);
+      // Adjusted: Start zoom earlier and end before projects appear
+      const start = vh * 0.1; // Start zoom earlier
+      const end = vh * 1.5; // End zoom before projects appear
 
-      // Simplified: Start scaling immediately from top
-      const progress = Math.min(scrollY / (vh * 2), 1);
-
-      console.log("Progress:", progress);
+      // Calculate progress based on scroll position
+      const progress = Math.min(
+        Math.max((scrollY - start) / (end - start), 0),
+        1
+      );
 
       // Camera moves from z=5 (default) to z=1 (very close)
-      setCameraZ(5 - progress * 4);
+      setCameraZ(5 - progress * 5);
       // Logo scales from 1 (normal) to 4 (4x bigger)
-      setLogoScale(1 + progress * 3);
-
-      console.log(
-        "Camera Z:",
-        5 - progress * 4,
-        "Logo Scale:",
-        1 + progress * 3
-      );
+      setLogoScale(1 + progress * 15);
     };
+
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -81,7 +77,7 @@ export default function Logo() {
         left: 0,
         width: "100vw",
         height: "100vh",
-        zIndex: 20,
+        zIndex: 5,
         pointerEvents: "none",
         overflow: "hidden",
       }}

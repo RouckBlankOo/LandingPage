@@ -1,12 +1,11 @@
 .logo-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 20;
-  pointer-events: none;
-  overflow: hidden;
+  will-change: transform;
+  transition: opacity 0.3s ease;
+}
+
+/* Add this to make logo fade when scrolled past a certain point */
+.logo-fade {
+  opacity: 0.2;
 }
   .company-logo img {
     width: 240px;

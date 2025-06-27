@@ -1,39 +1,97 @@
-.app-container {
-  position: relative;
-  min-height: 100vh;
-  width: 100%;
+/* Add these global styles to enhance the overall look */
+:root {
+  --primary: #48c6ef;
+  --primary-dark: #0c244e;
+  --background: #020713;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--background);
+  color: #ffffff;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
-/* Animated background */
-.animated-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-  background: linear-gradient(180deg, #b4b5b6, #0c244e, #1f2b97, #000000, #48c6ef);
-  background-size: 300% 300%;
-  background-position: 0% 50%;
+/* For smoother scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Optional animated gradient shift */
-@keyframes bgShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+/* Improve default text selection */
+::selection {
+  background: rgba(72, 198, 239, 0.3);
+  color: white;
 }
 
-/* Wave background (if using any SVG or canvas overlay) */
-.wave-bg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
+/* Preload web fonts for better performance */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2) format('woff2');
+}
+
+/* Enhanced focus styles for accessibility */
+*:focus {
+  outline: 2px solid rgba(72, 198, 239, 0.5);
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 30, 60, 0.7);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(72, 198, 239, 0.5);
+  border-radius: 10px;
+  border: 2px solid rgba(15, 30, 60, 0.7);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(72, 198, 239, 0.8);
+}
+
+/* Container for all page content */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Better button defaults */
+button, .button {
+  background: rgba(72, 198, 239, 0.2);
+  color: var(--primary);
+  border: 1px solid rgba(72, 198, 239, 0.3);
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+button:hover, .button:hover {
+  background: rgba(72, 198, 239, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(72, 198, 239, 0.2);
 }
